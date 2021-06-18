@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            margin: 15px 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="">
+        <fieldset>
+            <legend>Form 요소</legend>
+
+            <div>
+                <label for="username">이름 :</label>
+                <input type="text" name="" id="username" placeholder="이름 입력" required>
+            </div>
+
+            <div>
+                <label for="old">나이 :</label>
+                <input type="number" name="" id="old" placeholder="나이 입력">
+            </div>
+
+            <div>
+                <label for="tel">전화번호 :</label>
+                <input type="tel" name="" id="tel" placeholder="전화번호 입력">
+
+            </div>
+
+            <div>
+                <label for="password">비밀번호 :</label>
+                <input type="password" name="" id="password" placeholder="비밀번호" required>
+            </div>
+
+            <div>
+                <label for="file">파일 :</label>
+                <input type="file" name="" id="file">
+            </div>
+
+            <div>
+                <label for="color">컬러 :</label>
+                <input type="color" name="" id="color">
+            </div>
+
+            <div>
+                <label for="date">날짜 :</label>
+                <input type="date" name="" id="date">
+            </div>
+
+            <div>
+                <label for="time">시간 :</label>
+                <input type="time" name="" id="time">
+            </div>
+
+            <div>
+                <label for="datetime">날짜시간 :</label>
+                <input type="datetime" name="" id="datetime">
+            </div>
+
+            <div>
+                <label for="range">범위 :</label>
+                <input type="range" name="" id="">
+            </div>
+
+            <div>
+                <label for="sex">성별 :</label>
+
+                <input type="radio" name="sex" id="sex_male">
+                <label for="sex_male">남자</label>
+                <input type="radio" name="sex" id="sex_female">
+                <label for="sex_female">여자</label>
+            </div>
+
+            <div>
+                <label for="hobby">취미 :</label>
+
+                <label><input type="checkbox" name="hobby_soccer" id="">축구</label>
+                <label><input type="checkbox" name="hobby_" id="">야구</label>
+                <label><input type="checkbox" name="hobby_" id="">배구</label>
+                <label><input type="checkbox" name="hobby_" id="">농구</label>
+
+            </div>
+
+            <div>
+                <label for="location">거주지 :</label>
+                <input list="list" placeholder="선택하세요">
+
+                <datalist id="list">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </datalist>
+
+            </div>
+
+            <div>
+                <label for="introduction">자기소개</label>
+            </div>
+
+            <div>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+
+            <input type="submit" value="제출">
+        </fieldset>
+
+    </form>
+</body>
+
+</html>
