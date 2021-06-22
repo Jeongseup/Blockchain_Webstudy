@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    Arial;
+    margin: 0;
+}
+
+
+#mainNav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+
+    background-color: #2C3E50;
+    text-transform: uppercase;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    font-size: larger;
+
+}
+
+.nav-brand {
+    margin-right: 5%;
+
+}
+
+.nav-brand a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-menu {
+    flex-grow: 1;
+    margin-left: 50%;
+}
+
+
+.nav-menu ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-menu a {
+    margin: 1rem;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+/* Header/logo Title */
+.header {
+    display: block;
+    padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem;
+
+    background-color: #47a6ff;
+    text-align: center;
+    color: white;
+    font-size: larger;
+}
+
+.headshot {
+    width: 300px;
+    border-radius: 150px;
+    border-style: dashed;
+
+}
+
+.head-container p {
+    font-size: x-large;
+}
