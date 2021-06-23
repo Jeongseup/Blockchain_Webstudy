@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        //Object 오브젝트
+        // 오브젝트의 개념 중 데이터를 담는 개념만을 다룸
+
+        let person = {
+            // firstName: "John",
+            // lastName: "Doe",
+            // age: 40,
+            // tel: "123456",
+            // email: "abc@email.com"
+        };
+
+        person.firstName = "John";
+        person.lastName = "Doe";
+
+        // console.log(person.firstName);
+        // console.log(person.lastName);
+        // console.log(person.age);
+        // console.log(person.tel);
+        // console.log(person.email);
+
+        person.age = 41;
+        // console.log(person.age);
+        // console.log(person["email"]);
+
+
+        let clientkey = "email";
+        // error : console.log(person.clientkey);
+        console.log(person[clientkey]); // Computed
+    </script>
+
+</body>
+
+</html>
