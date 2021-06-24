@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="user_data.js"></script>
+    <!-- 문제.1 userlist의 데이터에서 gender가 male인 사람만 새 배열 maleUserList에 담고 console창에 출력하세요!  -->
+
+    <script>
+        console.log(userList);
+
+        var maleUserList = [];
+
+        for (var user of userList) {
+            // console.log(user);
+            if (user.gender == "male") {
+                maleUserList.push(user);
+                // console.table(user);
+                break;
+            }
+        }
+
+        console.table(maleUserList);
+
+        console.table(userList.filter(u => u.gender == "male"));
+    </script>
+
+
+</body>
+
+</html>

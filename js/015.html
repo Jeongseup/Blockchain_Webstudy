@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // 반복문 for - loop
+        var brands = ["삼성", "애플", "아마존", "구글"];
+        // brands.push("LG");
+
+        // var brandLength = brands.length;
+        // for (var i = 0; i < brandLength; i++) {
+
+        //     console.log(brands[i]);
+        // }
+
+        // for-in
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 40,
+            tel: "123456",
+            email: "abc@email.com"
+        };
+
+        // for (var key in person) {
+        //     console.log(key, "is", person[key]);
+        //     // console.log(person[key]);
+        // }
+
+        // for (var index in brands) {
+        //     console.log(brands[index]);
+        // }
+
+        // console.log(index);
+
+        // for-of
+
+
+        for (var brand of brands) {
+            console.log(brand);
+        }
+
+        var lang = "javascript";
+        for (var char of lang) {
+            console.log(char);
+        }
+    </script>
+
+</body>
+
+</html>

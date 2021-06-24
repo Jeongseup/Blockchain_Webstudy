@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <label for="tentacles">Number of tentacles (10-100):</label>
+
+    <input type="number" id="tentacles" name="tentacles" min="10" max="100">
+    <script>
+        var productList = [
+
+            {
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+
+        // console.table(productList);
+        // for (var product of productList) {
+        //     if (product.price <= inputCoin) {
+        //         buyList.push(product);
+        //     }
+        // }
+
+        // console.table(buyList);
+
+        var inputCoin = 800;
+        // var buyList = [];
+
+        var buyList = productList.filter(product => product.price <= inputCoin)
+        console.table(buyList);
+        // console.table(productList.filter(product => product.price <= inputCoin));
+    </script>
+
+</body>
+
+</html>

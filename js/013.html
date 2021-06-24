@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        //  조건문 - if
+        //  만일 () {
+        //     뭐뭐해야지
+        // }
+
+
+        // if (조건식) {
+        //     코드 선언
+        // }
+
+        var age = 15;
+        var isAdult = false;
+
+        if (age >= 19) {
+            isAdult = true;
+        }
+
+        if (isAdult) {
+            // isAdult == true
+            console.log("I'm an adult");
+        } else {
+            //  isAdult == false
+            console.log("I'm not an adult");
+        }
+
+        var age = 7;
+        var isFree = false;
+
+        if (age >= 70) {
+            isFree = true;
+
+            console.log("you're free");
+        } else if (age < 8) {
+            isFree = true;
+
+            console.log("you're free");
+        }
+
+        var time = 12;
+        var greeting = "Good night!";
+
+
+        if (time < 10) {
+            greeting = "Good morning!";
+        } else if (time < 16) {
+            greeting = "Good afternoon!";
+        } else {
+            greeting = "Good evening!";
+        }
+
+        console.log("Hi,", greeting); // Hi, +" " + greeting이 출력된다. 
+    </script>
+
+</body>
+
+</html>
