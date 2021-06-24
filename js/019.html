@@ -12,7 +12,98 @@
 <body>
 
     <script>
+        // 함수
 
+        // function add(n1, n2) {
+        //     return n1 + n2;
+        // }
+
+        // console.log(add(12, 7));
+        // // console.log(n1, n2); -> 에러 : n1, n2는 함수가 끝나면 사라짐
+
+
+        var productList = [
+
+            {
+                name: "솔의눈",
+                price: 700
+            },
+            {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워에이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            },
+            {
+                name: "밀키스",
+                price: 800
+            }
+        ];
+
+
+        function showProductList(inputCoin) {
+
+            if ((typeof inputCoin) == "number") {
+                // empty list create
+                var buyList = [];
+
+                // product filtering & append at list
+                buyList = productList.filter(product => product.price <= inputCoin);
+
+                // show list
+                console.log("Here is list which you are able to buy")
+
+                if (buyList.length == 0) {
+                    console.log("Sorry, you can't buy any dirnk\n");
+                    console.log("Please input more money");
+                }
+
+                console.table(buyList);
+            } else {
+                console.log("Inputdata is NOT number, please replace input collectly");
+            }
+
+        }
+        // showProductList(800);
+
+        let getProduct = (inputCoin) => productList.filter(p => p.price <= inputCoin);
+
+        var getProductList = function (inputCoin) {
+
+            if ((typeof inputCoin) == "number") {
+                // empty list create
+                var buyList = [];
+
+                // product filtering & append at list
+                buyList = productList.filter(product => product.price <= inputCoin);
+
+                // show list
+                console.log("Here is list which you are able to buy")
+
+                if (buyList.length == 0) {
+                    console.log("Sorry, you can't buy any dirnk\n");
+                    console.log("Please input more money");
+                }
+
+                console.table(buyList);
+            } else {
+                console.log("Inputdata is NOT number, please replace input collectly");
+            }
+
+        }
+
+        // let output = getProductList(1000);
+        console.table(getProduct(1000));
     </script>
 
 </body>

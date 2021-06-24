@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="user_data.js"></script>
+
+    <script>
+        function getUserList(gender) {
+
+            var outputUserList = [];
+
+            for (var user of userList) {
+
+                if (user.gender == gender) {
+                    outputUserList.push(user);
+                }
+            }
+
+            return outputUserList;
+        }
+
+
+        // let output = getUserList("female");
+        // console.table(output);
+
+        function calculator(n1, n2, operator) {
+
+            switch (operator) {
+                case "+":
+                    return add(n1, n2);
+
+                case "-":
+                    return sub(n1, n2);
+
+                case "*":
+                    return mul(n1, n2);
+
+                case "/":
+                    return div(n1, n2);
+
+                default:
+                    console.log("Please replace input collectlly")
+                    break;
+            }
+
+            function add(n1, n2) {
+                return n1 + n2;
+            }
+
+            function sub(n1, n2) {
+                return n1 - n2;
+            }
+
+            function mul(n1, n2) {
+                return n1 * n2;
+            }
+
+            function div(n1, n2) {
+                return n1 / n2;
+            }
+        }
+
+        let output = calculator(5, 10, "/");
+        console.log(output);
+    </script>
+
+</body>
+
+</html>
