@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // var txt = "abc";
+        // // console.log(txt.length);
+
+        // if (txt.length < 8) {
+        //     console.log("비밀번호가 너무 짧습니다.")
+        // }
+
+        // var txt = "Please locate where locate occur!";
+        // console.log(txt.lastIndexOf("locate"));
+        // console.log(txt[20]);
+
+        // var tel = "010-1234-5678";
+
+        // if (tel.indexOf("-") > -1) {
+        //     console.log("asdas")
+        // }
+
+        //  slice - 두개의 파라미터를 받는다.
+        //  1. 시작 인덱스 번호 / 2. 종료인덱스 번호
+
+
+        // text.slice(7, 13);
+        // text.slice(7);
+        // text.slice(-12);
+
+        var text = "Apple, Banana, Kiwi";
+
+        let findWord = "Banana";
+        let wordLength = findWord.length;
+        let startIndex = text.indexOf(findWord);
+
+        let output = text.slice(startIndex, startIndex + wordLength);
+
+        console.log(output);
+
+        // substring == slice
+        // console.log(text.substring(7, 13));
+        // console.log(text.substring(7));
+
+        // substr 
+        // 1. 시작 인덱스 번호 / 2. 잘내려고 하는 길이
+        // 언제 사용하냐? => 20210624를 분리하고 싶을 때
+
+        var date = "2021.06.24";
+
+        var year = date.slice(0, 4);
+        var year2 = date.substring(0, 4);
+        var year3 = date.substr(0, 4);
+
+        var month = date.slice(4, 6);
+        var month2 = date.substring(4, 6);
+        var month3 = date.substr(4, 2);
+
+        var day = date.slice(-2);
+        var day2 = date.substring(6);
+        var day3 = date.substr(-2, 2);
+
+        console.log(date); // 2021.06.24
+        console.log(date.replace(".", "-")); // 2021-06.24
+        console.log(date.replace(/\./g, "-")); // 2021-06-24
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // var txt = "Hello World";
+        // console.log(txt.toUpperCase());
+        // console.log(txt.toLowerCase());
+
+        // // concat 문자열
+        // var txt1 = "Hello";
+        // var txt2 = "World";
+        // console.log(txt1.concat(" ", txt2, "!"));
+
+        // // trim()
+        // var text = "        Hello World            ";
+        // console.log(text);
+        // console.log(text.trim());
+
+
+        // padStart()
+        // param1 : 문자열의 총 길이 
+        // param2 : 뭘로 채울래?
+        var txt = "12";
+
+        // console.log(txt.padStart(2, 0));
+
+
+        function fillChar(text, len, char) {
+
+            // while (text.length < len) {
+            //     text = char + text;
+            // }
+
+            for (var i = text.length; i < len; i++) {
+                text = char + text
+            }
+            return text;
+        }
+
+        // console.log(txt);
+        // console.log(fillChar(txt, 6, "0"));
+
+        // padEnd() : 별로 안쓰임.
+        // param 1 : 문자열의 총 기리
+        // param 2 : 뭘로 채울지?
+
+        var txt = "15";
+        console.log(txt.padEnd(5, 0));
+    </script>
+
+</body>
+
+</html>
