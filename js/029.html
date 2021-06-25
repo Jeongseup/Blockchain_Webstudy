@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // Array 객체 내장 함수
+        var arr = ["A", "B", "C", "D"];
+
+        // toString();
+        console.log(arr.toString());
+
+        //join() 합치되, 다른 문자열을 넣을 수 있음
+        console.log(arr.join(""));
+        console.log(arr.join("-"));
+
+        //pop() : 끝에서부터 하나씩 빼버린다.
+        console.log(arr.pop());
+        console.log(arr);
+
+        // push() : 끝에 하나를 추가한다
+        arr.push("E");
+        console.log(arr);
+
+        // shift() : 앞에 하나를 빼버린다.
+        console.log(arr.shift());
+        console.log(arr);
+
+        // unshift() : 앞에 하나를 추가한다.
+        arr.unshift("1");
+        console.log(arr);
+
+        // splice()
+        // param.1 : 어디에?
+        // param.2 : 추가하기 전 해당 인덱스부터 몇개를 삭제?
+        // param.3 : 어떤 문자를 추가할 지?
+        console.log(arr.splice(1, 0, "2"));
+        console.log(arr);
+    </script>
+
+</body>
+
+</html>

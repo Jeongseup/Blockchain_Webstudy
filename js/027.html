@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        var txt = "Hello World";
+
+        // 해당 인덱스 위치에 있는 딱 한 글자만 가져옴.
+        // console.log(txt.charAt(10));
+
+        // 해당 인ㄷ게스 위치에 있는 글자의 charaacter code를 가져옴.
+        // console.log(txt.charCodeAt(1));
+
+        // split()
+        var date = "2021-06-25";
+        var arr = date.split("-");
+
+        console.log(arr);
+
+        // join
+        console.log(date);
+        console.log(arr.join("/"));
+
+        var date2 = "20210625";
+        var arr2 = date2.split("");
+
+        console.log(arr2);
+
+        var tag = "#서울#양평#한경닷컴#개발의품격#잘한다";
+        var tagArr = tag.split("#");
+        console.log(tagArr);
+
+        // filter empty element
+        console.log(tagArr.filter(e => e));
+
+
+        // startsWith()
+        var url = "http://naver.com";
+        if (url.startsWith("http://") || ("https://")) {
+            console.log(url);
+        }
+
+        var imageFile = "logo.jpg";
+        if (imageFile.endsWith(".jpg") || imageFile.endsWith(".png")) {
+            console.log(imageFile);
+        }
+
+        var isRightImageExtension = imageFile.endsWith(".jpg") ? true : imageFile.endsWith(".png") ? true : false;
+        console.log(isRightImageExtension);
+    </script>
+
+</body>
+
+</html>

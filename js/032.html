@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="./user_data.js"></script>
+    <script>
+        var points = [34, 12, 45, 22, 6, 8, 2, 54];
+
+        // filter 
+        let output = points.filter(function (p) {
+            return p > 20;
+        });
+
+        // console.log(output);
+
+        let funcP = function (p) {
+            return p > 20;
+        };
+
+        // 위에 filter는 아래와 같다, 내부적으로 [];이 선언되어 있음
+
+        function filter2(arr, func) {
+
+            var outputList = [];
+
+            for (var p of arr) {
+                console.log(p);
+                if (func(p)) {
+                    outputList.push(p);
+                }
+            }
+            return outputList;
+        }
+
+        var output2 = userList.filter(function (user) {
+            return user.gender == "male" && user.age == 30;
+        })
+
+        // console.table(output2);
+
+        // map() 배열에 오브젝트가 담겨있을 때만 쓴다.
+    </script>
+
+</body>
+
+</html>

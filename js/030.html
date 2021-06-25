@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="./drinks.js"></script>
+    <script src="./user_data.js"></script>
+    <script>
+        // concat()
+        var myDaughter = ["남명혜", "김규비"];
+        var mySon = ["정재승", "정경민"];
+        var mySon2 = ["홍길동"];
+
+        var myChildern = myDaughter.concat(mySon2, mySon);
+        console.log(myChildern);
+
+        // splice로 중간에 concat이 될까?
+        myDaughter.splice(1, 0, mySon.toString());
+        console.log(myDaughter);
+
+        // slice
+        var arr1 = myChildern.slice(1);
+        // console.log(arr1);
+
+        //  sort()
+        // var arrSort = myChildern.sort();
+        // console.log(arrSort);
+        // console.log(arrSort.reverse());
+
+        // 그냥 바로도 reversing 가능
+        // console.log(myChildern.reverse());
+
+        var points = [34, 12, 45, 22, 6, 8, 2, 54];
+        console.log(points.sort());
+
+        var p = points.sort(function (a, b) {
+            // if (a > b) return 1;
+            // else if (a < b) return -1;
+            // else return 0;
+
+            return b - a;
+        });
+
+        console.log(p);
+        // 이렇게도 사용가능하다. 결국 배열은 오브젝트끼리의 비교일 뿐이다.
+        var p2 = productList.sort(function (a, b) {
+            return a.price - b.price;
+        });
+
+        // console.table(p2);
+
+
+        // console.log(myChildern.toString());
+        var p3 = userList.sort(function (a, b) {
+            a.age - b.age;
+        });
+
+
+        // console.table(p3);
+
+        for (var index in userList) {
+            console.log(userList[index]);
+        }
+    </script>
+
+</body>
+
+</html>
