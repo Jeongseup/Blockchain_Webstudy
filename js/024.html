@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="user_data.js"></script>
+
+    <script>
+        function getUserList(gender, fromAge, toAge) {
+
+            var outputUserList = [];
+
+            for (var user of userList) {
+
+                if ((user.gender == gender || (user.age >= fromAge && user.age <= toAge))) {
+                    outputUserList.push(user);
+                }
+            }
+
+            return outputUserList;
+        }
+
+        var inputGender = "male";
+        var inputFromAge = 24;
+        var inputToAge = 30;
+
+        let output = getUserList(inputGender, inputFromAge, inputToAge);
+        console.table(output);
+    </script>
+
+
+</body>
+
+</html>

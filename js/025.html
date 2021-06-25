@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        //문제 : 배열안에 배열 for - loop
+
+        var arr = [
+            [1, 2, 3, 4, 5],
+            [3, 12, 33, 24, 15],
+            [4, 7, 112, 3, 9],
+            [12, 32, 56, 23, 90],
+            [5, 9, 7, 21, 19]
+        ];
+
+
+        function printArray(arr) {
+
+            for (var tempArr of arr) {
+                // console.log(tempArr);
+
+                for (var element of tempArr) {
+                    console.log(element);
+                }
+            }
+        };
+
+        function printArray2(arr) {
+
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                // console.log(arr[i]);
+
+                var tempArr = arr[i];
+                var tempLen = arr[i].length;
+
+                for (var j = 0; j < tempLen; j++) {
+                    console.log(tempArr[j]);
+                }
+            }
+        };
+
+        function printArray3(arr2D) {
+
+            let len1 = arr2D.length;
+
+            for (let i = 0; i < len1; i++) {
+
+                // arr2D[0] : [1, 2, 3, 4, 5]
+
+                let len2 = arr2D[i].length;
+
+                for (let j = 0; j < len2; j++) {
+                    // arr2D[i][j] : [1, 2, 3, 4, 5][j]
+                    console.log(arr2D[i][j]);
+                }
+            }
+        };
+
+        // printArray2(arr);
+        printArray3(arr);
+
+        /*
+        function getFirstArr(arr) {
+            return arr[0];
+        }
+
+
+        function getDimension(arr) {
+
+            var dim = 0;
+
+            while (Array.isArray(arr)) {
+                arr = getFirstArr(arr);
+                dim++;
+            }
+        }
+        */
+    </script>
+
+</body>
+
+</html>

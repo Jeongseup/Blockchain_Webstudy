@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="./user_data.js"></script>
+    <script>
+        // 데이터 불러오기 확인
+        // console.log(userList);
+
+        //  유저 나이 합
+        function getUserAgeSum(userList) {
+            let output = 0;
+
+            for (let tempUser of userList) {
+                output += tempUser.age
+            }
+
+            return output;
+        }
+
+        // console.log(getUserAgeSum());
+
+
+        //  유저 나이 평균
+
+        function getUserAgeAvg(userList) {
+
+            return getUserAgeSum(userList) / userList.length;
+        }
+
+
+        // 나이가 가장 많은 유저 정보
+        function getUserAgeMax(userList) {
+
+            let output = 0;
+
+            for (let tempUser of userList) {
+
+                tempAge = tempUser.age;
+
+                if (output < tempAge) {
+                    output = tempAge
+                    // console.log(output)
+                }
+            }
+            return output;
+        }
+
+        // console.log(getUserAgeMax());
+
+
+        //  가장 적은 유저 정보
+        function getUserAgeMin(userList) {
+
+            // let output = Number.MAX_SAFE_INTEGER;
+            if (userList.length > 0) {
+                let output = userList[0].age;
+
+
+                for (let tempUser of userList) {
+
+                    tempAge = tempUser.age;
+
+                    if (output > tempAge) {
+                        output = tempAge;
+                        // console.log(output)
+                    }
+                }
+                return output;
+            } else {
+                console.log("This is empty array");
+            }
+
+        }
+
+        // console.log(getUserAgeMin());
+        // console.table(userList);
+
+        function getUserSummary(userList) {
+
+            let output = {};
+
+            output.userAgeSum = getUserAgeSum(userList);
+            output.userAgeAvg = getUserAgeAvg(userList);
+            output.userAgeMax = getUserAgeMax(userList);
+            output.userAgeMin = getUserAgeMin(userList);
+
+            return output;
+        }
+
+        //  전체 기능
+        function getUserAgeMath(userList, operator) {
+
+            var operatorArr = ["나이총합", "나이평균", "제일많은나이", "제일적은나이", "요약"]
+
+            switch (operator) {
+                case "나이총합":
+                    return getUserAgeSum(userList);
+
+                case "나이평균":
+                    return getUserAgeAvg(userList);
+
+                case "제일많은나이":
+                    return getUserAgeSum(userList);
+
+                case "제일적은나이":
+                    return getUserAgeSum(userList);
+
+                case "요약":
+                    return getUserSummary(userList);
+
+                default:
+                    console.log("ERORR!, Please one in", operator);
+                    break;
+            }
+
+        }
+
+        let output = getUserAgeMath(userList, "요약");
+
+        if (output != undefined) {
+            console.table(output);
+        }
+    </script>
+
+</body>
+
+</html>
