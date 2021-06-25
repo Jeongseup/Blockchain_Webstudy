@@ -12,6 +12,7 @@
 <body>
 
     <script src="./user_data.js"></script>
+    <script src="./drinks.js"></script>
     <script>
         var points = [34, 12, 45, 22, 6, 8, 2, 54];
 
@@ -47,7 +48,28 @@
 
         // console.table(output2);
 
-        // map() 배열에 오브젝트가 담겨있을 때만 쓴다.
+        // map() **배열에 오브젝트가 담겨있을 때만 쓴다.
+        // 오브젝트가 들어가고 오브젝트가 나온다라 생각하면 쉽다.
+        // console.table(productList);
+
+        var newList = productList.map(function (drink) {
+            return {
+                "name": drink.name,
+                "prcie": drink.price,
+                "fee": drink.price * 0.1
+            }
+        });
+
+        console.table(newList);
+
+        // reduce()
+        var total = points.reduce(function (sum, currentValue) {
+            return sum + currentValue;
+        });
+
+        console.log(total);
+
+        var total = points.reduce((sum, currentValue) => sum + currentValue);
     </script>
 
 </body>

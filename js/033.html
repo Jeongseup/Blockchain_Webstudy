@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // Date();
+
+        var d = new Date();
+        // console.log(d);
+
+        // var dString = d.toString();
+        // console.log(dString.split(" "));
+
+        // console.log(d.getFullYear());
+
+
+        var month = d.getMonth();
+        const monthName = ["Jan", "Feb", "Mar", "Apr", "May"];
+
+        // console.log(monthName[4]);
+        // console.log("month", month);
+
+        var day = d.getDate();
+        // console.log("day", day);
+
+        var hour = d.getHours();
+        // console.log("hour", hour);
+
+        var min = d.getMinutes();
+        // console.log("min", min);
+
+        var sec = d.getSeconds();
+        // console.log("sec", sec);
+
+        var mil = d.getMilliseconds();
+        // console.log("mil", mil);
+
+        var time = d.getTime();
+        // console.log(time); // 1970.01.01 을 기준으로.. 밀리세컨드 값이 불려져옴
+
+        var dayNameIndex = d.getDay();
+
+        // console.log(d.getDay())
+
+
+        var d2 = new Date(2021, 5, 25, 23, 1, 2);
+        // console.log(d2.get);
+
+        var d3 = new Date(0);
+        console.log(d3);
+    </script>
+
+</body>
+
+</html>

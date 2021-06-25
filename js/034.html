@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        function getIntervalDate(intervalDay) {
+
+            let interval = (24 * 60 * 60 * 1000) * intervalDay;
+            let now = new Date();
+
+            let outputDay = new Date(now.getTime() + interval);
+
+
+            var year = outputDay.getFullYear();
+            var month = outputDay.getMonth();
+            var day = outputDay.getDate();
+
+            return year + "/" + month.toString().padStart(2, "0") + "/" + day;
+        }
+
+        var output = getIntervalDate(-7);
+        console.log(output);
+
+        function getIntervalDate2(intervalDay, format) {
+
+            let interval = (24 * 60 * 60 * 1000) * intervalDay;
+            let now = new Date();
+
+            let d = new Date(now.getTime() + interval);
+
+            var year = d.getFullYear();
+            var month = d.getMonth();
+            var day = d.getDate();
+
+            return format.replace("YYYY", year).replace("MM", month.toString().padStart(2, "0")).replace("DD", day);
+        }
+
+        // var output = getIntervalDate2(-7, "YYYY-MM-DD");
+        // console.log(output);
+
+
+
+        function getIntervalDate3(intervalDay, operator) {
+
+            let outputDay = getIntervalDate(intervalDay);
+            outputDay = outputDay.replace(/\//g, operator);
+
+            return outputDay;
+        }
+
+        var output = getIntervalDate3(-7, "----");
+        console.log(output);
+
+
+        // console.log(date.replace(".", "-")); // 2021-06.24
+        // console.log(date.replace(/\./g, "-")); 
+    </script>
+
+
+</body>
+
+</html>
