@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="./drinks.js"></script>
+    <script>
+        // console.table(productList);
+
+
+
+
+        function getPriceArray(arr) {
+            var newArray = [];
+
+            let len = productList.length;
+
+            for (let i = 0; i < len; i++) {
+
+                newArray.push(productList[i].price);
+                // console.log(newArray);
+            }
+
+            return newArray;
+        }
+
+
+        let priceArray = getPriceArray(productList);
+
+
+
+        console.table("새로운 배열:", priceArray);
+    </script>
+
+</body>
+
+</html>
