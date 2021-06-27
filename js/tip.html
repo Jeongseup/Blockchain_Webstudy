@@ -13,31 +13,108 @@
 
     <script src="./drinks.js"></script>
     <script>
-        // console.table(productList);
+        console.table(productList);
 
 
 
 
-        function getPriceArray(arr) {
-            var newArray = [];
+        // function getSortedPriceArray(arr) {
+        //     var newArray = [];
 
-            let len = productList.length;
+        //     let len = productList.length;
 
-            for (let i = 0; i < len; i++) {
+        //     for (let i = 0; i < len; i++) {
+        //         newArray.push(productList[i].price);
 
-                newArray.push(productList[i].price);
-                // console.log(newArray);
-            }
+        //     }
+        //     // return newArray;
 
-            return newArray;
-        }
+        //     var sortedNewArray = newArray.sort(function (a, b) {
+        //         return a - b;
+        //     });
+
+        //     return sortedNewArray;
+
+        // }
 
 
-        let priceArray = getPriceArray(productList);
+        // let sortedPriceArray = getSortedPriceArray(productList);
+        // console.log("sorted price array : ", sortedPriceArray);
+
+        // 이렇게도 사용가능하다.결국 배열은 오브젝트끼리의 비교일 뿐이다.
 
 
+        var sortedPriceArray = productList.sort(function (a, b) {
+            return a.price - b.price;
+        });
 
-        console.table("새로운 배열:", priceArray);
+        console.table(sortedPriceArray);
+        // // 위에 filter는 아래와 같다, 내부적으로 [];이 선언되어 있음
+
+        // function filter2(arr, func) {
+
+        //     var outputList = [];
+
+        //     for (var p of arr) {
+        //         console.log(p);
+        //         if (func(p)) {
+        //             outputList.push(p);
+        //         }
+        //     }
+        //     return outputList;
+        // }
+
+        // var output2 = userList.filter(function (user) {
+        //     return user.gender == "male" && user.age == 30;
+        // })
+
+        // let funcP = function (p) {
+        //     return p > 20;
+        // };
+
+        // // 위에 filter는 아래와 같다, 내부적으로 [];이 선언되어 있음
+
+        // function filter2(arr, func) {
+
+        //     var outputList = [];
+
+        //     for (var p of arr) {
+        //         console.log(p);
+        //         if (func(p)) {
+        //             outputList.push(p);
+        //         }
+        //     }
+        //     return outputList;
+        // }
+
+        // var output2 = userList.filter(function (user) {
+        //     return user.gender == "male" && user.age == 30;
+        // })
+
+        // // console.table(output2);
+
+        // // map() **배열에 오브젝트가 담겨있을 때만 쓴다.
+        // // 오브젝트가 들어가고 오브젝트가 나온다라 생각하면 쉽다.
+        // // console.table(productList);
+
+        // var newList = productList.map(function (drink) {
+        //     return {
+        //         "name": drink.name,
+        //         "prcie": drink.price,
+        //         "fee": drink.price * 0.1
+        //     }
+        // });
+
+        // console.table(newList);
+
+        // // reduce()
+        // var total = points.reduce(function (sum, currentValue) {
+        //     return sum + currentValue;
+        // });
+
+        // console.log(total);
+
+        // var total = points.reduce((sum, currentValue) => sum + currentValue);
     </script>
 
 </body>
