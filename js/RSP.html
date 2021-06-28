@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        //가위, 바위, 보 게임 만들기
+
+
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+        function rspPlayer(myRSP) {
+
+            const arrRSP = ["가위", "바위", "보"];
+
+            playerRSP = arrRSP[getRandomInteger(0, 2)];
+
+            const setRSP = {
+                "가위": 0,
+                "바위": 1,
+                "보": 2
+            };
+
+            // console.log("myRSP is", myRSP, "playerRSP is", playerRSP);
+            // console.log("myRSP is", setRSP[myRSP], "playerRSP is", setRSP[playerRSP]);
+
+            let myNUM = setRSP[myRSP];
+            let playerNUM = setRSP[playerRSP];
+
+            judgementRSP = Math.sign(myNUM - playerNUM)
+            // console.log(judgementRSP);
+
+            if (judgementRSP < 0 && playerNUM == 2) {
+                judgementRSP = 1;
+            }
+
+
+            return {
+                "userRSP": myRSP,
+                "playerRSP": playerRSP,
+                "winner": judgementRSP
+            };
+        }
+
+        let output = rspPlayer("바위");
+        console.table(output);
+    </script>
+
+</body>
+
+</html>

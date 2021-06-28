@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button type="button" onclick="deleteItem();">삭제</button>
+    <script>
+        //Window 객체 - 전역 객체, global 객체
+        // window.alert("이것은 alert 창입니다."); // 이후 stop됨.
+
+        // 예를 누르면 자동으로 true를 return 해줌
+        function deleteItem() {
+            if (window.confirm('정말 삭제하시겠습니까?')) {
+                // 삭제 로직
+                document.write("삭제되었습니다");
+            }
+        }
+        // console.log("alert pass");
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        //Math 객체
+        // var x = 4.32;
+        // console.log("raw x is", x);
+
+        // round : 파라미터로 전달 받은 숫자형 데이터를 반올림 처리 함
+        // console.log("rounded x is",Math.round(x));
+        // console.log(Math.round(3.2));
+        // console.log(Math.round(-1.2));
+
+        //ceil() : 파라미터로 전달받은 숫자형 데이터를 무조건 올림 처리
+        // console.log("ceiled x is", Math.ceil(x));
+
+        function getCountPage(pageNum, itemNum) {
+
+            let output = Math.ceil(itemNum / pageNum);
+            return output;
+        }
+
+        // floor() :무조건 내림
+        // console.log("floored x is", Math.floor(x));
+
+        // trunc() - 무조건 정수 부분만 반환
+        // console.log("trunced x is", Math.trunc(x));
+
+        // sign() : 양수인지 음수인지 0인지 나타내는 함수
+        // console.log(Math.sign(-100));
+
+        //pow() : 제곱
+        // console.log(Math.pow(8, 2));
+        // console.log(8 ** 2);
+
+        // sqrt() : 루트값
+        // console.log(Math.sqrt(64));
+
+        // abs() 
+        // console.log(Math.abs(-1002.392));
+
+        // var points = [3, 1, 4, 5, 7, 1, 4];
+        //min, max
+        // console.log(Math.min(2, 3, 1, 4, 5, 8));
+        // console.log(Math.max(2, 3, 1, 4, 5, 8));
+
+        // random : 0보다 크고 1보다 작은 난수
+        // console.log(Math.random());
+
+        // console.log(Math.floor(Math.random() * 10));
+
+        // console.log(Math.random(1, 10));
+
+
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // console.log(getRandomInteger(-10, 10));
+
+
+        //가위, 바위, 보 게임 만들기
+
+        function rspPlayer(myRSP) {
+
+            const arrRSP = ["가위", "바위", "보"];
+            playerRSP = arrRSP[getRandomInteger(0, 2)];
+
+            // console.log(playerRSP);
+
+            if (myRSP == "가위") {
+                if (playerRSP == "가위") {
+                    judgementRSP = 0
+                } else if (playerRSP == "바위") {
+                    judgementRSP = -1
+                } else {
+                    judgementRSP = 1
+                }
+
+            } else if (myRSP == "바위") {
+                if (playerRSP == "바위") {
+                    judgementRSP = 0
+                } else if (playerRSP == "보") {
+                    judgementRSP = -1
+                } else {
+                    judgementRSP = 1
+                }
+
+
+            } else if (myRSP == "보") {
+                if (playerRSP == "보") {
+                    judgementRSP = 0
+                } else if (playerRSP == "가위") {
+                    judgementRSP = -1
+                } else {
+                    judgementRSP = 1
+                }
+            }
+
+            return {
+                "userRSP": myRSP,
+                "playerRSP": playerRSP,
+                "winner": judgementRSP
+            };
+        }
+
+        let output = rspPlayer("가위");
+        console.table(output);
+    </script>
+
+</body>
+
+</html>
