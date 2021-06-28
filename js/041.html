@@ -22,7 +22,46 @@
                 document.write("삭제되었습니다");
             }
         }
-        // console.log("alert pass");
+
+
+        // var pw = prompt("비밀번호를 입력하세요!");
+        // console.log(pw);
+
+        // if (pw == null) {
+        //     document.write("취쇠되었습니다.");
+        // } else if (pw == "") {
+        //     // 꼭 입력하세여!
+
+        // } else if (pw != "") {
+        //     console.log(pw);
+        // }
+
+
+        // open함수는 희한하게 window를 꼭 붙인다. 다른 사람이 open이라고 따로 함수를 만들 수도 있어서
+        // window.open("https://naver.com");
+
+        // setTimeout 함수 
+        // param. 1 : function
+        // param. 2 : 시간
+        // setTimeout(function () {
+        //     alert("프로그램 실행");
+        // }, 2000);
+
+        // setInterval(function () {
+        //     console.log("프로그램 실행\n");
+        // }, 1000);
+
+        var count = 0;
+
+        var fun = setInterval(function () {
+            if (count < 5) {
+                console.log("프로그램 실행:", count);
+                count++;
+            } else {
+                console.log("종료");
+                clearInterval(fun);
+            }
+        }, 1000);
     </script>
 
 </body>

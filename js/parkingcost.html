@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // 주차요금 계산 
+
+        // console.log(d.getDay());
+
+        function calParkingCost(parkingHours, purchaseAmount) {
+
+            var d = new Date();
+            // console.log(d.getDay());
+
+            // const isWeekend = (d.getDay() % 6 == 0) ?) 0 : 1;
+
+            let firstCost = 0;
+            let addCost = 0;
+
+            if ((d.getDay() == 0) || (d.getDay() == 6)) {
+
+                // 주말인 경우
+                firstCost = 5000;
+                addCost = 2000;
+
+            } else {
+
+                //평일인 경우
+                firstCost = 2000;
+                addCost = 1000;
+            }
+
+            console.log(firstCost, addCost);
+
+            // 사용자 주차 시간 분단위 변화
+            var minusHours = (purchaseAmount >= 150000) ? 3 : (purchaseAmount >= 100000) ? 2 : (purchaseAmount >=
+                50000) ? 1 : 0;
+            var parkingMinutes = (parkingHours - minusHours) * 60;
+
+
+
+            if (parkingMinutes <= 0) {
+                // free 
+                var totalCost = 0;
+            } else if (parkingMinutes < 30) {
+                // 기본요금
+                var totalCost = firstCost;
+            } else {
+                //기본요금 + 추가요금
+                parkingMinutes = parkingMinutes - 30;
+                // console.log("올림", Math.ceil(parkingMinutes / 10) * 10);
+                var totalCost = firstCost + (Math.ceil(parkingMinutes / 10) * 10) / 10 * addCost;
+            }
+
+            return totalCost;
+        }
+
+        let output = calParkingCost(3.6, 150000);
+        console.log(output);
+    </script>
+
+</body>
+
+</html>
