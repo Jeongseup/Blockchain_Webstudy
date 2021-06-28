@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="./user_data.js"></script>
+    <script>
+        //Map object
+
+        var key1 = {
+            "keyname": 2
+        };
+        var key2 = [2, 3, 4, 5];
+
+        var myMap = new Map();
+        // myMap.set("female", 1);
+        // myMap.set(key1);
+
+        console.log(myMap);
+
+        console.log(myMap.get("female"));
+
+        for (var user of userList) {
+            if (myMap.has(user.gender)) {
+                myMap.set(user.gender, myMap.get(user.gender) + 1);
+            } else {
+                myMap.set(user.gender, 1);
+            }
+        }
+
+        console.log(myMap);
+        // console.log(myMap.keys());
+        // console.log(myMap.values());
+
+        // console.log(myMap.delete("female"));
+
+        // console.log(myMap);
+        // console.log(myMap.clear());
+        // console.log(myMap);
+        //
+
+        // const apples = {
+        //     name: "Apples"
+        // };
+
+        // myMap.set(apples, "1200");
+        // myMap.set(key2, "values");
+
+        // console.log(myMap.get(apples));
+        // console.log(myMap);
+
+        myMap.forEach(function (value, key) {
+            console.log(value, key);
+        })
+
+        console.log(myMap.size);
+        myMap.set("female", 1);
+        console.log(myMap);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script src="./user_data.js"></script>
+    <script>
+        var oUser = {};
+
+        // for (var user of userList) {
+        //     if (oUser[user.gender]) {
+
+        //         oUser[user.gender]++;
+
+        //     } else {
+        //         console.log(user.gender);
+
+        //         var oUserGender = user.gender;
+        //         console.log(oUserGender);
+
+
+        //         oUser[oUserGender] = 1;
+        //         //하지만 oUser.oUserGender = 1; 은 안됨
+        //         // 어떤 값이 key로 들어갈 지 몰라서 
+        //         // .키명 보다 [키명]의 형식으로 가야한다.
+        //         console.log(oUser);
+
+        //         // oUser[user.gender] = 1;
+
+        //     }
+        //     break;
+        // }
+
+        for (var user of userList) {
+            if (oUser[user.gender]) {
+                oUser[user.gender]++;
+
+            } else {
+                console.log(user.gender);
+                oUser[user.gender] = 1;
+            }
+        }
+        console.table(oUser);
+
+        // set object
+        // var arr = [];
+        // var arr = new Array();
+        // var mySet = new Set();
+
+        // // console.log(arr, mySet);
+        // mySet.add(1);
+        // console.log(mySet);
+
+        // mySet.add(2);
+        // console.log(mySet);
+
+        // mySet.add(3);
+        // console.log(mySet);
+
+        // // 동일한 값이 없기 때문에 has라는 게 사용 가능함
+        // console.log(mySet.has(3));
+
+        // mySet.add(3);
+        // console.log(mySet);
+
+        // var myArr = Array.from(mySet);
+        // console.log(myArr);
+        // var set = new Set(arr);
+    </script>
+
+</body>
+
+</html>

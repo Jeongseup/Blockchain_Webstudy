@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="./user_data.js"></script>
+    <script>
+        // console.table(userList);
+
+        // Map객체 이용 문제
+
+        var x = "27";
+        console.log(x.charAt(0));
+
+        for (let user of userList) {
+
+            var ageStrLength = user.age.toString().length;
+            var ageFirtStr = user.age.toString()[0];
+
+
+            var ageStr = user.age.toString();
+            // console.log(ageStr.sub)
+            // tempAge = 6;
+
+            // var ageStrLength = tempAge.toString().length;
+            // var ageFirtStr = tempAge.toString()[0];
+
+            console.log(ageStrLength, ageFirtStr);
+
+            if (ageStrLength > 1) {
+                var ageGroup = ageFirtStr.padEnd(2, "0");
+                console.log(ageGroup);
+
+            } else {
+                var ageGroup = "younger";
+            }
+
+            console.log(ageGroup);
+            break;
+        }
+
+        function getAgeGroup(userList) {
+            let myMap = new Map();
+
+            for (let user of userList) {
+                var ageFirtStr = user.age.toString()[0];
+                var ageGroup = ageFirtStr.padEnd(2, "0");
+
+                // 2가 올텐데.. 
+                if (myMap.has(ageGroup)) {
+                    myMap.set(ageGroup, myMap.get(ageGroup) + 1);
+                } else {
+                    myMap.set(ageGroup, 1);
+                }
+
+            }
+
+            return myMap;
+        }
+
+        // let output = getAgeGroup(userList);
+        // console.log(output)
+
+        // for (var user of userList) {
+        //     if (myMap.has(user.gender)) {
+        //         myMap.set(user.gender, myMap.get(user.gender) + 1);
+        //     } else {
+        //         myMap.set(user.gender, 1);
+        //     }
+        // }
+    </script>
+
+</body>
+
+</html>

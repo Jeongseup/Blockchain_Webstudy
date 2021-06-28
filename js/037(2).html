@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="./user_data.js"></script>
+    <script>
+        function getAgeGroup() {
+
+            let userAgeMap = new Map();
+
+            userAgeMap.set("20g", 0);
+            userAgeMap.set("30g", 0);
+            userAgeMap.set("40g", 0);
+
+            console.log(userAgeMap);
+
+            for (var user of userList) {
+                // console.log(user.age);
+                if (user.age >= 20 && user.age < 30) {
+                    userAgeMap.set("20g", userAgeMap.get("20g") + 1);
+                }
+
+                if (user.age >= 30 && user.age < 40) {
+                    userAgeMap.set("30g", userAgeMap.get("30g") + 1);
+                }
+
+                if (user.age >= 40 && user.age < 50) {
+                    userAgeMap.set("40g", userAgeMap.get("40g") + 1);
+                }
+                // console.log(userAgeMap);
+            }
+
+            console.log(userAgeMap);
+        }
+        // console.log(1);
+        // getAgeGroup();
+
+
+        function getAgeGroup2() {
+            let userAgeGroup = {};
+
+            for (var user of userList) {
+                // console.log(user.age);
+
+                var ageGroup = user.age.toString().charAt(0) + "0"; // 20
+                console.log(userAgeGroup[ageGroup]);
+
+                if (userAgeGroup[ageGroup]) {
+                    userAgeGroup[ageGroup]++;
+                } else {
+                    userAgeGroup[ageGroup] = 1;
+                }
+            }
+
+            console.log(userAgeGroup);
+        }
+
+        getAgeGroup2();
+    </script>
+
+</body>
+
+</html>
