@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <button type="button" onclick="doSearch(this);">조회</button>
+
+    <select name="" id="123" onchange="doChange(this);">
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+
+    </select>
+
+
+    <script>
+        // this의 용도 
+        // 1. window 객체 호출, 
+        // 2. html tag 내 이벤트 발생시 특정 태그 value 접근
+        // 3. object 에서 자기 object로 접근
+
+        //this 키워드가 의미하는 것 첫번째. this = Window 객체
+        // console.log(this);
+
+        function myFunction() {
+            console.log(this);
+        }
+
+        function doSearch(obj) {
+            console.log(obj);
+        }
+
+        function doChange(obj) {
+            console.log(obj);
+            console.log(obj.value);
+
+        }
+
+        // HTML DOM 요소에서 이벤트가 수행될 때 호출하는 함수에  this를 파라미터 값으로
+        // 전달하면 이때 this 는 이벤트가 일어나는 HTML DOM 요소 그 자체를 의미
+
+
+        // myFunction();
+
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            getFullName: this.firstName + " " + this.lastName
+        };
+    </script>
+
+</body>
+
+</html>

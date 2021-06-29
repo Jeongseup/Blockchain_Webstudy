@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // Default Function Parameter 
+
+        function say(msg) {
+            console.log(msg);
+        }
+
+        // say();
+
+        function add(n1, n2) {
+            return n1 + n2;
+        }
+
+        // console.log(add(5));
+
+        // 누군가 함수에 제대로 argument를 안줄 때
+        // 에러가 아닌 default값으로 설정되게 하는 것
+
+        function say(msg = "파라미터가 안들어왔네요!") {
+            console.log(msg);
+        }
+
+        say();
+
+        function add(n1 = "ㅋㅋ", n2 = "파라미터가 안들어왔네요!") {
+            console.log(typeof n1);
+            if (typeof n1 == "string" || typeof n2 == String) {
+                return console.log("error");
+            }
+            return console.log(n1 + n2);
+        }
+
+        add();
+    </script>
+
+</body>
+
+</html>

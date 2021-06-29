@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // Scope - 선언된 변수에 대한 접근성의 의미
+
+        function myFunction() {
+            // 재미난 점은 global 이 이미 있더라도
+            // 지역적으로 let으로 선언이 가능하다.
+            // let이나 const 차이는 없더라..
+
+
+            // 찾는 우선 순위는 local을 먼저 찾고 그 다음 global을 찾고
+            let carName = "볼보"; // local Scope
+            console.log(carName);
+
+        }
+
+        //함수안에서 된 let에 대해서는 다시 밖에서 define 가능
+        let carName = "기아"; // Global Scope
+        console.log(carName);
+        myFunction();
+
+        function myFnc2() {
+            console.log(carName);
+        }
+        myFnc2();
+    </script>
+
+</body>
+
+</html>
