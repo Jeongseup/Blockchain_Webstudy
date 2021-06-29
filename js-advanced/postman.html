@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- 얜 무슨 역할? -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // 가짜 서버 : Mock 서버
+
+        // Promise
+
+        // const url = "https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/getUserList";
+        const url = "https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/";
+        // console.log(url);
+
+        // var data = axios.get(url);
+        // console.log(data);
+
+        function getData(path) {
+            return new Promise(function (resolve, reject) {
+                axios.get(url + path).then(function (jsonData) {
+                    console.log(jsonData.data);
+                });
+
+            });
+        }
+
+
+        // var jsonData = axios.get(url + "getDrinkList");
+        // console.log(jsonData.data);
+
+
+
+
+        // Async-await
+        // 실제로는 서버 url, 현재는 뭐든 던져주면 가지고 오는 url
+        async function api(url) {
+            return (await axios.get(url)).data;
+
+        }
+
+        async function getData(path) {
+            var data = (await api(url + path));
+            console.log(path, data);
+
+            console.log("hihi")
+        }
+
+        getData("getUserList");
+        getData("getDrinkList");
+
+
+        // fetch
+        fetch(url + "getUserList").then(function (response) {
+            console.log(response);
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData);
+        });
+
+        console.log("hi");
+    </script>
+
+</body>
+
+</html>

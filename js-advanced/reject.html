@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- 얜 무슨 역할? -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // 가짜 서버 : Mock 서버
+
+        // Promise
+
+        const url = "https://021382de-6838-47cd-b6bb-3b0fc09fa7c4.mock.pstmn.io/";
+
+        function getData(path) {
+            return new Promise(function (resolve, reject) {
+
+                reject(new Error("Request is failed"));
+
+                axios.get(url + path).then(function (jsonData) {
+                    console.log(jsonData.data);
+                });
+
+            });
+        }
+
+        getData().then(function (jsonData) {
+            console.log(jsonData.data);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    </script>
+
+</body>
+
+</html>

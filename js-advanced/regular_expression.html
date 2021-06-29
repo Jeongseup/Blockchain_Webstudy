@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // 정규식
+        // regular expression
+
+        var txt = "Hello World! world!";
+        console.log(txt.replace("World", "Jermy"));
+
+        var regexp = /World/;
+        console.log(txt.replace("World", "Jermy"));
+
+        var regexp = /World/gi;
+
+        // g : global
+        // i : insentive?  대소문자 구분 X
+
+
+        var str = "123abc456kkkk";
+        var regexp1 = /[0-9]/g;
+
+        // return을 arr로 해줌
+        var result = str.match(regexp1);
+
+
+        console.log(result);
+
+        var str2 = "re, green, red, gree, gen, yellow, blue";
+        var regexp2 = /(red|green)/g;
+
+        var result2 = str2.match(regexp2);
+        console.log(result2);
+
+        var tel = "010-3008-9614";
+        // 3자리 숫자 - 4자리 숫자 - 4자리 ..
+
+        var regexp3 = /^(010)-\d{4}-\d{4}/;
+        console.log(regexp3.test(tel));
+
+        var email = "thswjdtmq4@inu.ac.kr";
+        // abc234@example.com
+        // ajipd@Oopaod
+
+
+        var regexp4 = /^(\w+\d*)+@\w+(\.\w{2, 3})+$/;
+        console.log(regexp4.test(email));
+    </script>
+
+</body>
+
+</html>
