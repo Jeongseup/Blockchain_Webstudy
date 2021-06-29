@@ -17,7 +17,17 @@ function getAgeGroup(userList, keyAge) {
     return userAgeGroup;
 }
 
+
+/**
+ * 함수 설명 
+ * @param {*} userList 
+ * @param {*} keyAge 
+ * @returns 
+ */
+
 function getAgeGroup2(userList, keyAge) {
+
+
     let myMap = new Map();
 
     for (let user of userList) {
