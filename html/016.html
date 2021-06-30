@@ -9,7 +9,28 @@
 </head>
 
 <body>
+    <form>
+        <div>
+            <label for="phone">전화번호</label>
+            <input type="tel" name="phone" id="phone" placeholder="000-0000-000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+            <input type="submit" value="저장">
+        </div>
+        <div>
+            <label for="phone2">전화번호2</label>
+            <div>
+                <input type="tel" name="phone" id="phone" placeholder="000" pattern="[0-9]{3}">
+                -
+                <input type="tel" name="phone" id="phone" placeholder="000" pattern="[0-9]{3}">
+                -
+                <input type="tel" name="phone" id="phone" placeholder="000" pattern="[0-9]{3}">
+            </div>
+        </div>
+    </form>
 
+    <script>
+        var userPhone = document.getElementById("phone").value;
+        console.log(userPhone);
+    </script>
 </body>
 
 </html>
