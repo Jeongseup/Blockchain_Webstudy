@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        section {
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            border: 3px solid black;
+            text-align: left;
+            align-items: center;
+        }
+
+        #menusbar,
+        #discountbar {
+            width: 50%;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        input[type="number"] {
+            width: 50px;
+        }
+
+        select {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="menusbar"></div>
+        <div id="discountbar">
+            <select id="CREDIT">
+                <option value="">신용카드를 선택하세요.</option>
+            </select>
+            <br>
+            <select id="TELECOM">
+                <option value="">통신사를 선택하세요.</option>
+            </select>
+            <br>
+            <select id="OKCASHBAG">
+                <option value="">OK캐시백를 선택하세요.</option>
+            </select>
+            <br>
+            <select id="POINT">
+                <option value="">포인트결제를 선택하세요.</option>
+            </select>
+            <br>
+            <select id="COUPON">
+                <option value="">할인쿠폰을 선택하세요.</option>
+            </select>
+        </div>
+    </section>
+
+    <button onclick="discountor();">계산</button>
+
+    <script src="./scripts/restaurant.js"></script>
+    <script>
+        //패밀리레스토랑(VIPS) 결제 금액 계산하기 - 선택한 메뉴의 총금액과 소지하고 있는 할인 카드/통신사/포인트/OK캐시백/쿠폰을 적용해서 최종 결제 금액 구하기
+        //패밀리레스토랑 점원이라고 가정해서, 점원이 결제 금액을 계산하기 위한 화면을 구성하세요.
+        //할인카드, 통신사카드, OK캐시백, 포인트 결제
+        //제휴할인 카드 간 중복할인은 되지 않습니다.
+        //중복할인 가능한 쿠폰 사용 시, 쿠폰 할인 후 나머지 금액에 대해 제휴카드 할인이 적용됩니다.
+        //참조 : https://www.ivips.co.kr:7002/benefit/beCard.asp
+
+        // console.table(menus);
+        // 총 결제 금액 계산
+
+
+        loadCoupons();
+        loadCards();
+        loadmenus();
+
+
+
+        function discountor() {
+            var totalAmount = calculator();
+            console.log("총 금액 :", totalAmount);
+
+            var sel_couponId = parseInt(document.getElementById("COUPON").value);
+            var discountCoupon = coupons.filter(c => c.couponId == sel_couponId)[0];
+
+            var discountList = [];
+            for (type of cardTypes) {
+
+                var tempDiscount = document.getElementById(type.cardType).value;
+                if (tempDiscount != "") {
+                    discountList.push(parseInt(tempDiscount));
+                } else {
+                    discountList.push(0);
+                }
+            }
+
+            var maxCount = discountList.reduce(function (a, b) {
+                return Math.max(a, b);
+            });
+
+
+
+
+            // 중복할인이 되는지?
+            if (discountCoupon.doubleDiscount) {
+                console.log(discountCoupon);
+
+                if (discountCoupon.discountType == "%") {
+                    console.log(discountCoupon.discount);
+                    totalAmount = totalAmount * (100 - discountCoupon.discount) / 1000;
+                    console.log(totalAmount);
+                } else {
+                    totalAmount -= discountCoupon.discount;
+                }
+
+
+
+                // 쿠폰 계산
+            } else {
+
+                //안되면 어떻게 계산한 가격이 더 싼지? 비교                
+            }
+        }
+
+
+        function calculator() {
+
+            // console.log("click!");
+            let totalAmount = 0;
+
+            for (var menu of menus) {
+                var count = parseInt(document.getElementById("menu_" + menu.menuId).value);
+                // console.log(count);
+
+                if (count > 0) {
+                    var tempAmount = menu.price * count;
+                    totalAmount += tempAmount;
+                }
+            }
+            console.log(totalAmount);
+            return totalAmount;
+        }
+
+
+
+
+
+
+        function loadmenus() {
+            var m = [];
+
+            for (var menu of menus) {
+
+                m.push(`<label for="">${menu.menuName}(${menu.price}원) : </label>`);
+                m.push(`<input type="number" name="" id="menu_${menu.menuId}">`);
+                m.push(`<br>`);
+                // h.push(`<option value="${idx}">${subwayList[idx]}</option>`);
+            }
+            document.getElementById("menusbar").innerHTML = m.join("");
+            // document.getElementById("end").innerHTML = h.join("");
+        }
+
+        function loadCards() {
+            for (type of cardTypes) {
+                // console.log(type.cardType);
+                // userList.filter(u => u.gender == "male")
+                var tempCardList = creditCards.filter(c => c.cardType == type.cardType);
+                // console.table(tempCardList);
+
+                var c = [];
+                c.push(`<option value="">${type.title}를 골라주세요.</option>`);
+                for (var card of tempCardList) {
+
+                    c.push(`<option value="${card.discount}">${card.cardName}</option>`);
+                }
+                document.getElementById(type.cardType).innerHTML = c.join(""); // console.table(c);
+            }
+        }
+
+        function loadCoupons() {
+            var h = [];
+            h.push(`<option value="">할인쿠폰을 골라주세요.</option>`);
+
+            for (var coupon of coupons) {
+                // console.log(coupon);
+                h.push(`<option value="${coupon.couponId}">${coupon.title}</option>`);
+            }
+
+            document.getElementById("COUPON").innerHTML = h.join("");
+            // document.getElementById("end").innerHTML = h.join("");
+        }
+    </script>
+
+</body>
+
+</html>
