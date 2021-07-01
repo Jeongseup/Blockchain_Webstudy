@@ -35,9 +35,18 @@
 </head>
 
 <body>
+
     <section>
-        <div id="menusbar"></div>
+        <h2>메뉴</h2>
+
+        <div id="menusbar">
+
+        </div>
+
+
+
         <div id="discountbar">
+            <h2>할인 선택</h2>
             <select id="CREDIT">
                 <option value="">신용카드를 선택하세요.</option>
             </select>
@@ -57,6 +66,10 @@
             <select id="COUPON">
                 <option value="">할인쿠폰을 선택하세요.</option>
             </select>
+        </div>
+
+        <div id="divRealTotal" style="display: none;">
+            <h2>최종 결제 금액 : <strong id="realTotal"></strong></h2>
         </div>
     </section>
 
@@ -83,6 +96,11 @@
 
         function discountor() {
             var totalAmount = calculator();
+            if (totalAmount == 0) {
+                return alert("메뉴를 먼저 선택하세요");
+            }
+
+
             console.log("총 금액 :", totalAmount);
 
             var sel_couponId = parseInt(document.getElementById("COUPON").value);
@@ -99,33 +117,69 @@
                 }
             }
 
-            var maxCount = discountList.reduce(function (a, b) {
+            var maxDiscount = discountList.reduce(function (a, b) {
                 return Math.max(a, b);
             });
 
 
+            console.log("총 금액 :", totalAmount);
 
+            if (discountCoupon != null && discountCoupon.doubleDiscount) {
+                // console.log(discountCoupon);
 
-            // 중복할인이 되는지?
-            if (discountCoupon.doubleDiscount) {
-                console.log(discountCoupon);
-
+                var discountAmount = 0;
                 if (discountCoupon.discountType == "%") {
-                    console.log(discountCoupon.discount);
-                    totalAmount = totalAmount * (100 - discountCoupon.discount) / 1000;
-                    console.log(totalAmount);
+                    // console.log(discountCoupon.discount);
+                    discountAmount = Math.round(totalAmount * (discountCoupon.discount / 100));
+                    // console.log(totalAmount);
                 } else {
-                    totalAmount -= discountCoupon.discount;
+                    discountAmount = discountCoupon.discount;
                 }
 
+                console.log("쿠폰 중복할인 :", discountAmount)
+
+                totalAmount = totalAmount - discountAmount;
 
 
-                // 쿠폰 계산
+                // 쿠폰 할인 후 최대 카드할인
+                if (maxDiscount > 0) {
+                    totalAmount = totalAmount - Math.round(totalAmount * (maxDiscount / 100));
+                }
+                console.log("총 금액 :", totalAmount);
+
             } else {
 
-                //안되면 어떻게 계산한 가격이 더 싼지? 비교                
+                if (maxDiscount > 0) {
+                    // 카드 할인 최대 할인량 저장
+                    const discountAmount = Math.round(totalAmount * (maxDiscount / 100));
+
+                }
+                console.log("총 금액 :", totalAmount);
+
+                // 이후 쿠폰 할인과 비교
+                if (discountCoupon != null) {
+                    if (discountAmount > discountCoupon.discountAmount) {
+
+                        totalAmount = totalAmount - discountAmount;
+                    } else {
+                        totalAmount = totalAmount - discountCoupon.discountAmount;
+                    }
+                } else {
+
+                    totalAmount = totalAmount - discountAmount;
+                }
             }
+
+            console.log(totalAmount);
+            document.getElementById("realTotal").innerText = totalAmount + "원";
+            document.getElementById("divRealTotal").style.display = "";
+
         }
+
+
+
+
+
 
 
         function calculator() {
