@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="txtABC" id="txt1"><br>
+  <input type="text" name="" id="txt2"><br>
+
+
+  <p>ABC</p>
+  <p>DEF</p>
+
+  <h2>당신이 관심있어 하는 프로그래밍 언어는?</h2>
+  <label for="">
+    <input type="checkbox" name="chk_interest" id="" value="js"> 자바스크립트
+  </label>
+  <label for="">
+    <input type="checkbox" name="chk_interest" id="" value="html"> HTML
+  </label>
+  <label for="">
+    <input type="checkbox" name="chk_interest" id="" value="css"> CSS
+  </label>
+
+  <div>
+    <label><input type="radio" name="city" id="" value="제주">제주</label>
+    <label><input type="radio" name="city" id="" value="서울">서울</label>
+    <label><input type="radio" name="city" id="" value="부산">부산</label>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <button onclick="myBtn4();" id="btnSave" style="padding:10px;">저장</button>
+  </div>
+
+
+  <script>
+    function myBtn(e) {
+
+      // html element에 접근하는 방법 1 : event & this(=target)
+      console.log(e);
+      console.log("event 접근", e.target); // this의 효과
+
+
+      // html element에 접근하는 방법 2 : Use selector(id, class, tag)
+      var btnEle = document.querySelector("#btnSave");
+      console.log("selector id 접근", btnEle);
+
+      // e.target 이랑 select된 btnEle랑 똑같은 것
+
+      // tag로 접근
+      var btnEle2 = document.querySelector("button");
+      console.log("selector tag 접근", btnEle2);
+
+      var btnEle3 = document.getElementsByTagName("button");
+      console.log(btnEle3);
+    }
+
+
+
+    function myBtn2(e) {
+
+      var btnEle = e.target;
+      btnEle.disabled = true;
+
+
+      // 특정 기능을 수행하고, 몇 초 뒤 다시 풀 수도 있다.
+      setTimeout(function () {
+        btnEle.disabled = false;
+      }, 2000);
+    }
+
+
+    function myBtn3() {
+
+      // getElement 접근
+      var ele = document.getElementById("txt1");
+      console.log(ele);
+
+      // 쿼리 셀렉터로 접근
+      var ele2 = document.querySelector("#txt1");
+      console.log(ele2);
+
+
+      // var txt1Value = ele.value;
+      // element 내 text 추출 방법  .value
+      console.log(ele.value, ele2.value);
+    }
+
+
+    function myBtn4() {
+
+      // html element를 가져온다
+      var ele2 = document.getElementById("txt2");
+      console.log(ele2);
+
+      // 그 다음 안에 text를 넣는 방법에는 2가지가 있다.
+
+      // input text method.1 : element.value = "";
+      // ele2.value = "가나다";
+
+      // input text method.2 : setAttribute("value", "");
+
+      ele2.setAttribute("name", "가나다");
+      console.log(ele2);
+
+      // 왜 그런거지..?
+    }
+
+
+    function myBtn5() {
+      var pTag = document.getElementsByTagName("p");
+
+      // array로 출력된다.
+      console.log(pTag[0]);
+
+      var pTag2 = console.log(document.querySelectorAll("p"));
+      console.log(pTag[0]);
+      console.log(pTag[1]);
+
+      var chks = document.getElementsByName("chk_interest");
+
+      var len = chks.length;
+
+      // 이렇게 출력하면 가능함
+      for (var i = 0; i < len; i++) {
+        console.log(chks[i]);
+      }
+    }
+
+    function myBtn6() {
+
+      // selector 사용 방법
+      var chks = document.querySelectorAll("[name=chk_interest]");
+      console.log(chks);
+
+      for (var chk of chks) {
+        if (chk.checked) {
+          console.log(chk.value);
+        }
+      }
+    }
+
+
+    function myBtn7() {
+      //checked item만 가져오는 방법
+      var checkedItems = document.querySelectorAll("input[type='checkbox']:checked");
+      // var checked = document.querySelectorAll("#checks input[type='checkbox']:checked");
+
+      for (var chk of checkedItems) {
+        console.log(chk.value);
+      }
+    }
+
+
+    function myBtn8() {
+      var rdoCities = document.getElementsByName("city");
+
+      for (var city of rdoCities) {
+        if (city.checked) {
+
+          console.log(city.value);
+
+          // value를 가져오는 방법은 get .. 도 있다.
+          console.log(city.getAttribute("value"));
+
+          // 이런 식으로 축약도 가능
+          // console.log(document.querySelector("[name=city]:checked").value);
+
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

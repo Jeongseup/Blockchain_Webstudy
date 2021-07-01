@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+
+<button onclick="myFunction();" id="btn_save">저장</button>
+
+<body>
+
+    <script>
+        function myFunction() {
+            // console.log(e);
+            // console.log(e.target);
+
+            // var btnEle = e.target;
+            // btnEle.disabled = true;
+            console.log(1);
+            document.querySelector("#btn_save").disabled = true;
+
+            // setTimeout(function () {
+            //     document.querySelector("#btn_save").disable = false;
+
+            // }, 2000);
+        }
+
+        function myFunction2(btnEle) {
+
+            btnEle.disable = true;
+        }
+    </script>
+
+</body>
+
+</html>

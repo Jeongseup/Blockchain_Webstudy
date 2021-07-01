@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <input type="text" name="" id="txt1"><br>
+    <input type="text" name="" id="txt2"><br>
+
+    <p>ABC</p>
+    <p>DEF</p>
+
+    <div>
+        <h2>당신이 관심있어 하는 프로그래밍 언어는..?</h2>
+        <label for="">
+            <input type="checkbox" name="chk_interest" value="js">자바스크립트
+        </label>
+        <label for="">
+            <input type="checkbox" name="chk_interest" value="html">HTML
+        </label>
+        <label for="">
+            <input type="checkbox" name="chk_interest" value="css">CSS
+        </label>
+    </div>
+    <div>
+        <label for=""><input type="radio" name="city" id="" value="제주">제주</label>
+        <label for=""><input type="radio" name="city" id="" value="부산">부산</label>
+        <label for=""><input type="radio" name="city" id="" value="양평">양평</label>
+    </div>
+
+    <button onclick="myFun();">조회</button>
+
+    <script>
+        //접근하는 방법이 너무 많은데, 기본을 배우자
+        // id를 이용하는 방법, 태그를 이용하는 방법, name을 이용하는 방법
+
+        // function myFun() {
+        //     var ele = document.getElementById("txt1");
+        //     var eleS = document.querySelector("#txt1");
+        //     var eleS = document.querySelector("input[type=text]");
+
+
+        // var txt1Value = ele.value;
+        // if (txt1Value == "") {
+        //     console.log("null");
+        //     var ele2 = document.getElementById("txt2");
+        //     ele2.value = "null";
+        //      ele2.setAttribut("value", "가나다");
+        // }
+        //     console.log(eleS);
+        // }
+
+        // tag name은 여러개 있을 수 있으므로, 배열로 return 한다.
+        // var tags = document.getElementsByTagName("p");
+
+
+
+        // names 또한 공통적으로 들어갈 수 있어서 배열이고, tag내 name값
+
+        function myFun() {
+            // var chks = document.getElementsByName("chk_interest");
+            // console.log(chks);
+
+            // for (var chk of chks) {
+            //     console.log("for");
+            //     if (chk.ckecked) {
+            //         console.log("checked", chk.value);
+            //     }
+            // }
+
+            console.log(1);
+            var checkedItems = document.querySelectorAll("[name=chk_interest]:checked");
+            console.log(checkedItems);
+
+            // var radioValue = document.querySelector("[name=city]:checked").value;
+            // console.log(radioValue);
+        }
+
+
+
+        // class name
+        // var clss = document.getElementsByClassName();
+        // selector
+    </script>
+
+</body>
+
+</html>
