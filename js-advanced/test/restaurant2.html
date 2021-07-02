@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        button.menu {
+            padding: 5px;
+            margin: 5px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            font-size: large;
+
+        }
+
+        .container {
+            border: 1px solid #222;
+            background-color: aliceblue;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .bg-primary {
+            background-color: beige !important;
+        }
+
+        .bg-secondary {
+            background-color: bisque !important;
+        }
+
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #222;
+            padding: 10px;
+        }
+
+        select {
+            font-size: large;
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .btn-cal {
+            font-size: large;
+            padding: 15px;
+            background-color: blueviolet;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>메뉴</h2>
+    <div id="divMenus" class="container"></div>
+    <h2>선택한 메뉴</h2>
+    <div id="divSelectedMenus" class="container bg-primary">
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th>메뉴명</th>
+                    <th>가격</th>
+                    <th>수량</th>
+                    <th>합계</th>
+                </tr>
+            </thead>
+            <tbody id="selectedMenusTb"></tbody>
+            <tfoot id="selectedMenuTotal">
+                <tr>
+                    <td colspan="3" style="text-align: right;">합계</td>
+                    <td><strong id="total"></strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <h2>제휴/할인카드/쿠폰</h2>
+    <div id="divDiscount" class="container">
+        <div>
+            <select name="" id="selCREDIT"></select>
+        </div>
+        <div>
+            <select name="" id="selTELECOM"></select>
+        </div>
+        <div>
+            <select name="" id="selPOINT"></select>
+        </div>
+        <div>
+            <select name="" id="selOKCASHBAG"></select>
+        </div>
+        <div>
+            <select name="" id="selCoupons"></select>
+        </div>
+    </div>
+    <div style="padding: 10px; text-align: center;">
+        <button class="btn-cal" onclick="calculateAmount();">결제 금액 계산</button>
+    </div>
+    <div id="divRealTotal" style="display: none;">
+        <h2>최종 결재 금액: <strong id="realTotal"></strong></h2>
+    </div>
+
+    <script src="./scripts/restaurant.js"></script>
+    <script>
+        var total = 0;
+
+        function calculateTotalAmount() {
+            var lineSum = document.getElementsByClassName("line-sum");
+            total = 0;
+
+
+            console.table(lineSum);
+            for (var l of lineSum) {
+                total += parseInt(l.value);
+            }
+
+            document.getElementById("total").innerText = total;
+        }
+
+        function changeLineSum(e, price) {
+            var qty = e.target.value; // string value
+            // console.log(typeof qty);
+            var lineSum = document.getElementsByClassName("line-sum")[0];
+            lineSum.value = price * parseInt(qty);
+
+            calculateTotalAmount();
+        }
+
+
+        var oSelectFood = {};
+
+        function selectFood(menuId) {
+
+
+            const menu = menus.filter(m => m.menuId == menuId)[0];
+            // console.log(menu);
+
+            if (oSelectFood[menu.menuId]) {
+                // oSelectFood[menu.menuId] = menu;
+                // console.table(oSelectFood);
+
+                return alert("이미 추가된 메뉴입니다.");
+
+            }
+
+            oSelectFood[menu.menuId] = menu;
+            // console.table(oSelectFood);
+
+
+            var tr = [];
+            tr.push('<tr>');
+            tr.push(`<td>${menu.menuName}</td>`);
+            tr.push(`<td>${menu.price}</td>`);
+            tr.push(
+                `<td><input type="number" value="1" step="1" min="1" style="width:100%;" onchange="changeLineSum(event, ${menu.price});"></td>`
+            );
+            tr.push(
+                `<td><input type="text" value="${menu.price * 1}" style="width:100%;" class="line-sum" readonly></td>`
+            );
+            tr.push('</tr>');
+            document.getElementById("selectedMenusTb").insertAdjacentHTML("beforeend", tr.join(""));
+
+            calculateTotalAmount();
+        }
+
+
+
+
+        function loadMenus() {
+            var h = [];
+            for (var menu of menus) {
+                h.push(
+                    `<button class="menu" onclick="selectFood(${menu.menuId});">${menu.menuName}(${menu.price}원)</button>`
+                );
+            };
+            document.getElementById("divMenus").innerHTML = h.join("");
+        }
+
+
+        function loadCards() {
+            var oCards = {};
+
+            for (var card of creditCards) {
+                // console.log(oCards[card.cardType]);
+
+                if (!oCards[card.cardType]) {
+                    oCards[card.cardType] = [];
+                }
+
+                oCards[card.cardType].push(card);
+                // break;
+            }
+
+            // card 타입별 Object로 정리
+            console.log(oCards);
+
+
+            for (key in oCards) {
+                // object는 for-in만 가능함
+                // console.log(key);
+                // break;
+
+                var h = [];
+
+                h.push(`<option value="">${cardTypes.filter(c => c.cardType == key)[0].title} 선택하세요.</option>`);
+                for (card of oCards[key]) {
+                    h.push(`<option value="${card.discount}">${card.cardName}</option>`);
+                }
+
+                document.getElementById("sel" + key).innerHTML = h.join("");
+            }
+
+            var h = [];
+            h.push('<option value="">할인쿠폰을 선택하세요.</option>');
+            for (var coupon of coupons) {
+                h.push(`<option value="${coupon.couponId}">${coupon.title}</option>`);
+            }
+
+            document.getElementById("selCoupons").innerHTML = h.join("");
+        }
+
+        loadCards();
+        loadMenus();
+    </script>
+
+</body>
+
+</html>

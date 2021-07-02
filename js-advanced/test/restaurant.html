@@ -29,7 +29,17 @@
         }
 
         select {
-            width: 300px;
+            width
+        }
+
+        #displaybar {
+            margin: 1em;
+            width: 80%;
+            height: 100px;
+            overflow-y: auto;
+            border: 2px solid black;
+
+            /* text-align: center; */
         }
     </style>
 </head>
@@ -67,13 +77,16 @@
                 <option value="">할인쿠폰을 선택하세요.</option>
             </select>
         </div>
-
-        <div id="divRealTotal" style="display: none;">
-            <h2>최종 결제 금액 : <strong id="realTotal"></strong></h2>
-        </div>
     </section>
 
-    <button onclick="discountor();">계산</button>
+    <div id="displaybar">
+        <button onclick="discountor();">계산</button>
+        <div id="divRealTotal">
+            <h2>최종 결제 금액 : <strong id="realTotal">0 원</strong></h2>
+        </div>
+
+    </div>
+
 
     <script src="./scripts/restaurant.js"></script>
     <script>
@@ -149,25 +162,27 @@
 
             } else {
 
+                var discountAmount = 0;
                 if (maxDiscount > 0) {
                     // 카드 할인 최대 할인량 저장
-                    const discountAmount = Math.round(totalAmount * (maxDiscount / 100));
-
+                    discountAmount = Math.round(totalAmount * (maxDiscount / 100));
                 }
-                console.log("총 금액 :", totalAmount);
 
                 // 이후 쿠폰 할인과 비교
                 if (discountCoupon != null) {
-                    if (discountAmount > discountCoupon.discountAmount) {
 
+                    console.log(discountCoupon);
+
+                    if (discountAmount > discountCoupon.discountAmount) {
                         totalAmount = totalAmount - discountAmount;
                     } else {
                         totalAmount = totalAmount - discountCoupon.discountAmount;
                     }
                 } else {
-
+                    console.log(discountAmount);
                     totalAmount = totalAmount - discountAmount;
                 }
+
             }
 
             console.log(totalAmount);
@@ -188,15 +203,16 @@
             let totalAmount = 0;
 
             for (var menu of menus) {
-                var count = parseInt(document.getElementById("menu_" + menu.menuId).value);
-                // console.log(count);
+                var count = null;
+                count = (document.getElementById("menu_" + menu.menuId).value);
+                // console.log("counter", count);
 
-                if (count > 0) {
+                if (count > 0 && count != null) {
                     var tempAmount = menu.price * count;
                     totalAmount += tempAmount;
                 }
             }
-            console.log(totalAmount);
+            // console.log("calculator : ", totalAmount);
             return totalAmount;
         }
 
@@ -211,7 +227,7 @@
             for (var menu of menus) {
 
                 m.push(`<label for="">${menu.menuName}(${menu.price}원) : </label>`);
-                m.push(`<input type="number" name="" id="menu_${menu.menuId}">`);
+                m.push(`<input type="number" step="1" min="1" name="" id="menu_${menu.menuId}">`);
                 m.push(`<br>`);
                 // h.push(`<option value="${idx}">${subwayList[idx]}</option>`);
             }

@@ -19,8 +19,11 @@
   <!-- afterend -->
   <h2>여기는 H2 영역</h2>
 
-  <button onclick="myFunction()">클릭</button>
+  <button id="btn">클릭</button>
   <script>
+    var listen = document.getElementById("btn").addEventListener("click", myFunction, true);
+    console.log(listen);
+
     function myFunction() {
       //insertAdjacentHTML()
       //파라미터가 2개
